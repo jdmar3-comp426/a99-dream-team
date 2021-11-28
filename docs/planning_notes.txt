@@ -1,0 +1,39 @@
+HISTORY
+11.24
+    First meeting
+    Assigned roles
+    Scheduled first check-in with LA
+11.27
+    Initialized project setup: created required files and Initialized them with template content
+    Drafted TODO list
+
+TODO: (* means optional: do it if we have time left)
+about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/javascript-games-examples-for-beginners/)
+    * Custom image
+    Figure out how to read image dimension
+    Figure out how to crop image (crop it into 4*6 blocks as 24 smaller images) * Custom #pieces
+    Figure out how to align those smaller images to recover the original image (Then remove the bottom right one)
+    Figure out how to make those smaller images (and the white space for the block that's removed) into buttons
+    Figure out how to send the button clicks to puzzle.js (send coordinate of the clicked block. top-left is (0,0))
+    Complete puzzle.js (
+            ramdomize puzzle while ensuring puzzle is solvable (#inversion odd? NOTsolvable : solvable)
+            clicked block is adjacent to white block ? swap that block with white block : do nothing
+            * Return success if puzzle is solved
+            )
+    Figure out how to read output from puzzle.js
+    Figure out how to update the page according to the output
+about the page:
+    Titles, introductions, and basic infos
+    Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
+    Interactions with the front end should be logged in a database.
+    * Decorations
+about database:
+    User database - registration details (username, password, email address, etc.)
+    Interaction database - details of user interactions (login history, gameplay history, save points, scores, etc.)
+about the project:
+    README.md file with basic descriptiong, installation requirements/instructions, dependency list, run instructions
+    /docs/ directory containing full documentation of every available API endpoint that you create for your app. This directory shoud also house an archive of your planning documentation.
+    Code comments (preferably referring to the documentation)
+    User instructions in the interface
+    Demo
+    Self/group evaluation
