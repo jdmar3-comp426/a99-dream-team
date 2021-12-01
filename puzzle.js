@@ -23,9 +23,8 @@ function isSolvable(){
     */
 }
 
-function makePuzzle(){
+function genPuzzle(){
     // Generate a random permutation of 0-23
-    // check against isSolvable() return puzzle : generate another one and repeat
     var puzzle=[];
     var pool=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     while (puzzle.length<24){
@@ -33,6 +32,17 @@ function makePuzzle(){
         puzzle.push(pool.idx);
         pool.splice(idx,1);
     }
+    return puzzle;
+}
+
+function makePuzzle(){
+    // check against isSolvable() return puzzle : generate another one and repeat
+    var puzzle = genPuzzle();
+    while (isSolvable(puzzle)==False){
+        puzzle = genPuzzle();
+    }
+    return puzzle;
+
 }
 
 function click(n){
