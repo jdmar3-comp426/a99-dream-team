@@ -61,7 +61,7 @@ function makePuzzle() {
         puzzle = genPuzzle();
     }
     for (let i=0;i<23;i++){
-        document.getElementById(i).src  = "unc"+i+".jpg";
+        document.getElementById(i).src  = "src/images/unc"+puzzle[i]+".jpg";
     }
     return puzzle;
 }
