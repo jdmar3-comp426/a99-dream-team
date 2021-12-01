@@ -78,7 +78,7 @@ function click(n, arr) {  // - caleb
     } else { // returning false if no swap occurred
         return false
     }
-    return checkSolved(arr) // testing to see if the array is solved if a swap occurred
+    return [checkSolved(arr),arr] // testing to see if the array is solved if a swap occurred
 }
 
 function swap(n, arr) { // this function swaps positions of n and the empty block within our puzzle array - caleb
