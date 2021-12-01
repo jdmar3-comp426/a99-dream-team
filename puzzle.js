@@ -20,6 +20,7 @@ function isSolvable(puzzle) {
     8 > 6
 
     The empty tile is ignored.
+    Theory credit to: https://datawookie.dev/blog/2019/04/sliding-puzzle-solvable/
     */
    var numInv=0;
    for (let i=0;i<24;i++){
@@ -49,8 +50,7 @@ function genPuzzle() {
 function makePuzzle() {
     // check against isSolvable() return puzzle : generate another one and repeat
     var puzzle = genPuzzle();
-    console.log(puzzle);
-    while (isSolvable(puzzle) == False) {
+    while (isSolvable(puzzle) == false) {
         puzzle = genPuzzle();
     }
     return puzzle;
@@ -59,6 +59,6 @@ function makePuzzle() {
 function click(n) {
     // n is the block that is clicked
     // check if n is next to the empty block  swap place check success return : do nothing return false
-    // neighbor in 4*6 matrix means index is +-1 or +-6
+    // neighbor in 4*6 matrix means index is +-1 or +-6 watch out for edge cases
 }
-console.log(genPuzzle());
+console.log(makePuzzle());
