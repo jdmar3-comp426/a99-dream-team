@@ -56,9 +56,43 @@ function makePuzzle() {
     return puzzle;
 }
 
-function click(n) {
+function click(n, arr) {  // - caleb
     // n is the block that is clicked
     // check if n is next to the empty block  swap place check success return : do nothing return false
     // neighbor in 4*6 matrix means index is +-1 or +-6 watch out for edge cases
+
+    // if place is swapped and puzzle is not solved, return -1
+
+    if (arr[n] == 23) { 
+        return false
+    } else if (n == 0) {
+        if (arr[1] == 23 | arr[6] == 23) {
+            swap(n, arr) 
+        }
+    } else if (n < 6 | n > 17) {
+        if (arr[n + 1] == 23 | arr[n - 1] == 23) {
+            swap(n, arr)
+        }
+    } else if (arr[n + 1] == 23 | arr[n - 1] == 23 | arr[n + 6] == 23 | arr[n - 6] == 23) {
+        swap(n, arr)
+    } else { // returning false if no swap occurred
+        return false
+    }
+    return checkSolved(arr) // testing to see if the array is solved if a swap occurred
 }
-console.log(makePuzzle());
+
+function swap(n, arr) { // this function swaps positions of n and the empty block within our puzzle array - caleb
+    var indexEmpty = arr.indexOf(23)
+    var temp = arr[n]
+    arr[n] = 23
+    arr[indexEmpty] = temp
+}
+
+function checkSolved(arr) { // this function checks if our puzzle is solved (ie, sorted in ascending order) - caleb
+    for (var i = 0; i < arr.length - 1; i++) {
+        if (arr[i + 1] - arr[i] != 1) {
+            return false
+        }
+    }
+    return true
+}
