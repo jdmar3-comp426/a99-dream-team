@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/jdmar3-comp426/a99-dream-team#readme",
   "dependencies": {
+    "better-sqlite3": "^7.4.5",
     "browser-sync": "^2.27.7",
-    "bulma": "^0.9.3"
+    "bulma": "^0.9.3",
+    "express": "^4.17.1"
   }
 }

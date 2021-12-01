@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="custom_style.css">
         <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
         <script type="text/javascript" src="puzzle.js"></script>
+        <script type="text/javascript" src="server.js"></script>
+        <script type="text/javascript" src="database.js"></script>
         <title>Picture Puzzle game</title>
     </head>
     <body>
@@ -21,22 +23,42 @@
             </figcaption>
         </div>
         <div>
-            <div class="row">
-                <div class="column">
-                  <button img src="unc{}.jpg".format(n), onclick="click(0)">
-                  <img src="unc1.jpg">
-                  <img src="unc2.jpg">
+            <button id="start">Randomize!</button>
+        </div>
+        <div>
+            <div class="column">
+                <div class="row">
+                  <img src="" id=0 onclick="click(0)">
+                  <img src="" id=1 onclick="click(1)">
+                  <img src="" id=2 onclick="click(2)">
+                  <img src="" id=3 onclick="click(3)">
+                  <img src="" id=4 onclick="click(4)">
+                  <img src="" id=5 onclick="click(5)">
                 </div>
-                <div class="column">
-                    <img src="unc2.jpg">
+                <div class="row">
+                    <img src="" id=6 onclick="click(6)">
+                    <img src="" id=7 onclick="click(7)">
+                    <img src="" id=8 onclick="click(8)">
+                    <img src="" id=9 onclick="click(9)">
+                    <img src="" id=10 onclick="click(10)">
+                    <img src="" id=11 onclick="click(11)">
                 </div>
-                <div class="column">
-                    <img src="unc2.jpg">
+                <div class="row">
+                    <img src="" id=12 onclick="click(12)">
+                    <img src="" id=13 onclick="click(13)">
+                    <img src="" id=14 onclick="click(14)">
+                    <img src="" id=15 onclick="click(15)">
+                    <img src="" id=16 onclick="click(16)">
+                    <img src="" id=17 onclick="click(17)">
                 </div>
-                <div class="column">
-                    <img src="unc2.jpg">
+                <div class="row">
+                    <img src="" id=18 onclick="click(18)">
+                    <img src="" id=19 onclick="click(19)">
+                    <img src="" id=20 onclick="click(20)">
+                    <img src="" id=21 onclick="click(21)">
+                    <img src="" id=22 onclick="click(22)">
                 </div>
-              </div>
+            </div>
         </div>
     </body>
 </html>

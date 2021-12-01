@@ -3,7 +3,13 @@
     number n represents the block in the original picture at coordinate (row=Math.floor(n/6), col=n%6) where the top-left is defined to be (0,0)
     block n=23 is the bottom-right block that is changed to empty
 */
-
+var db = require('./database.js');
+const startbtn = document.querySelector('#start')
+startbtn.onclick = function(){
+    var puzzle = makePuzzle();
+    //TODO: STORE THIS PUZZLE IN DATABASE
+    //db.prepare("")
+}
 function isSolvable(puzzle) {
     /*
     Checks the number of "inversions". If this is odd then the puzzle configuration is not solvable.
@@ -48,10 +54,14 @@ function genPuzzle() {
 }
 
 function makePuzzle() {
+    console.log(1)
     // check against isSolvable() return puzzle : generate another one and repeat
     var puzzle = genPuzzle();
     while (isSolvable(puzzle) == false) {
         puzzle = genPuzzle();
+    }
+    for (let i=0;i<23;i++){
+        document.getElementById(i).src  = "unc"+i+".jpg";
     }
     return puzzle;
 }
