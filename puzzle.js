@@ -55,7 +55,7 @@ function makePuzzle() {
     while (isSolvable(puzzle) == false) {
         puzzle = genPuzzle();
     }
-    for (let i = 0; i < 23; i++) {
+    for (let i = 0; i < 24; i++) {
         document.getElementById(i).src = "src/images/unc" + puzzle[i] + ".jpg";
     }
     // TODO: store array in database and set step=0
@@ -72,9 +72,9 @@ function click(n) {  // - caleb
     // if place is swapped and puzzle is not solved, return -1
     // TODO: pull array from database
     // var arr=db.prepare().get()
-    console.log(n)
-    arr=puzzleArr
-    console.log(arr)
+    console.log(n);
+    arr=puzzleArr;
+    console.log(arr);
     if (arr[n] == 23) {
         return false
     } else if (n == 0) {
