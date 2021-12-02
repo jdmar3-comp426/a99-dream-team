@@ -3,6 +3,7 @@
     number n represents the block in the original picture at coordinate (row=Math.floor(n/6), col=n%6) where the top-left is defined to be (0,0)
     block n=23 is the bottom-right block that is changed to empty
 */
+// TODO: please remove all reference to puzzleArr once all database interactions are completed
 var puzzleArr;
 //var db = require('./database.js');
 const startbtn = document.querySelector('#start')
@@ -64,7 +65,7 @@ function makePuzzle() {
     return puzzle;
 }
 
-function click(n) {  // - caleb
+function myclick(n) {  // - caleb
     // n is the block that is clicked
     // check if n is next to the empty block  swap place check success return : do nothing return false
     // neighbor in 4*6 matrix means index is +-1 or +-6 watch out for edge cases
@@ -72,22 +73,56 @@ function click(n) {  // - caleb
     // if place is swapped and puzzle is not solved, return -1
     // TODO: pull array from database
     // var arr=db.prepare().get()
-    console.log(n);
     arr=puzzleArr;
-    console.log(arr);
     if (arr[n] == 23) {
+        // if clicking on white space do nothing
         return false
     } else if (n == 0) {
+        // for top-left corner
         if (arr[1] == 23 | arr[6] == 23) {
             swap(n, arr)
         }
-    } else if (n < 6 | n > 17) {
-        if (arr[n + 1] == 23 | arr[n - 1] == 23) {
+    } else if (n == 5) {
+        // for top-right corner
+        if (arr[4] == 23 | arr[11] == 23) {
+            swap(n, arr)
+        }
+    } else if (n == 18) {
+        // for bot-left corner
+        if (arr[12] == 23 | arr[19] == 23) {
+            swap(n, arr)
+        }
+    } else if (n == 23) {
+        // for bot-right corner
+        if (arr[22] == 23 | arr[17] == 23) {
+            swap(n, arr)
+        }
+    } else if (n < 6) {
+        // for first row
+        if (arr[n + 1] == 23 |arr[n - 1] == 23 |arr[n + 6] == 23 ) {
+            swap(n, arr)
+        }
+    } else if (n >19) {
+        // for last row
+        if (arr[n + 1] == 23 |arr[n - 1] == 23 |arr[n - 6] == 23 ) {
+            swap(n, arr)
+        }
+    } else if (n%6==0) {
+        // for first col
+        if (arr[n-6] == 23 |arr[n+6] == 23 |arr[n+1] == 23 ) {
+            swap(n, arr)
+        }
+    } else if (n%6==0) {
+        // for last col
+        if (arr[n-6] == 23 |arr[n+6] == 23 |arr[n-1] == 23 ) {
             swap(n, arr)
         }
     } else if (arr[n + 1] == 23 | arr[n - 1] == 23 | arr[n + 6] == 23 | arr[n - 6] == 23) {
+        // normal case
         swap(n, arr)
-    } else { // returning false if no swap occurred
+    } else { 
+        // returning false if no swap occurred
+        // Should never meet this case
         return false
     }
     // TODO: store updated array back to database
@@ -96,6 +131,7 @@ function click(n) {  // - caleb
         // TODO: update database if step<beststep
         // db.prepare().run()
     }
+
     return [checkSolved(arr), arr] // testing to see if the array is solved if a swap occurred
 }
 
@@ -105,8 +141,8 @@ function swap(n, arr) { // this function swaps positions of n and the empty bloc
     var temp = arr[n]
     arr[n] = 23
     arr[indexEmpty] = temp
-    document.getElementById(n).src = "src/images/unc" + indexEmpty + ".jpg";
-    document.getElementById(indexEmpty).src = "src/images/unc" + n + ".jpg";
+    document.getElementById(n).src = "src/images/unc" + 23 + ".jpg";
+    document.getElementById(indexEmpty).src = "src/images/unc" + temp + ".jpg";
 }
 
 function checkSolved(arr) { // this function checks if our puzzle is solved (ie, sorted in ascending order) - caleb
