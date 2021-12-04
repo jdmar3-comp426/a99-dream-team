@@ -22,9 +22,15 @@ app.get("/app/", (req, res, next) => {
 
 app.post("/app/new/", (req, res) => {
   const stmt = db.prepare(
-    "INSERT INTO userinfo (user, pass, step, game) VALUES (?, ?, ?, ?)"
+    "INSERT INTO userinfo (user, pass, currStep, bestStep, game) VALUES (?, ?, ?, ?, ?)"
   );
-  const info = stmt.run(req.body.user, md5(req.body.pass), 0, []);
+  const info = stmt.run(
+    req.body.user,
+    md5(req.body.pass),
+    req.body.currStep,
+    req.body.bestStep,
+    req.body.game
+  );
   res.status(201).json({
     message:
       info.changes + " record created: ID " + info.lastInsertRowid + " (201)",
@@ -45,7 +51,7 @@ app.get("/app/user/:id", (req, res) => {
 
 app.patch("/app/update/user/:id", (req, res) => {
   const stmt = db.prepare(
-    "UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id =?"
+    "UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass), currStep = COALESCE(?,currStep), bestStep = COALESCE(?,bestStep), game = COALESCE(?,game) WHERE id =?"
   );
   const info = stmt.run(req.body.user, md5(req.body.pass), req.params.id);
   res.status(200).json({
