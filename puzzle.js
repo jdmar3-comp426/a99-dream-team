@@ -4,8 +4,7 @@
     block n=23 is the bottom-right block that is changed to empty
 */
 // TODO: please remove all reference to puzzleArr once all database interactions are completed
-var puzzleArr;
-//var db = require('./database.js');
+//var puzzleArr;
 const startbtn = document.querySelector("#start");
 function isSolvable(puzzle) {
   /*
@@ -58,8 +57,15 @@ function makePuzzle() {
   for (let i = 0; i < 24; i++) {
     document.getElementById(i).src = "src/images/unc" + puzzle[i] + ".jpg";
   }
-  // TODO: store array in database and set step=0
-  // db.prepare().run()
+  // get bestStep
+  const sendRequest = new XMLHttpRequest();
+  sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+  sendRequest.send(null);
+  beststep = sendRequest.response.bestStep;
+  // update currStep
+  const sendRequest = new XMLHttpRequest();
+  sendRequest.open("POST", "http://localhost:5000/app/new/game", false);
+  sendRequest.send(curUser, 0, beststep, puzzle);
   puzzleArr = puzzle;
   return puzzle;
 }
@@ -69,11 +75,15 @@ function myclick(n) {
   // n is the block that is clicked
   // check if n is next to the empty block  swap place check success return : do nothing return false
   // neighbor in 4*6 matrix means index is +-1 or +-6 watch out for edge cases
-
   // if place is swapped and puzzle is not solved, return -1
-  // TODO: pull array from database
-  // var arr=db.prepare().get()
-  arr = puzzleArr;
+
+  // get current puzzle
+  const sendRequest = new XMLHttpRequest();
+  sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+  sendRequest.send(null);
+  arr = sendRequest.response.game;
+  //console.log(arr);
+  //arr = puzzleArr;
   if (arr[n] == 23) {
     // if clicking on white space do nothing
     return false;
@@ -130,25 +140,44 @@ function myclick(n) {
     // Should never meet this case
     return false;
   }
-  // TODO: store updated array back to database
-  // db.prepare().run()
+
   if (checkSolved(arr)) {
-    // TODO: update database if step<beststep
-    // db.prepare().run()
+    // get curstep and beststep
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    curstep = sendRequest.response.currStep;
+    beststep = sendRequest.response.bestStep;
+    if (curstep < beststep) {
+      // if improved, update beststep
+      const sendRequest = new XMLHttpRequest();
+      sendRequest.open("PATCH", "/app/update/game/" + curUser, false);
+      sendRequest.send(curstep, curstep, arr, curUser);
+    }
   }
 
-  return [checkSolved(arr), arr]; // testing to see if the array is solved if a swap occurred
+  return;
 }
 
 function swap(n, arr) {
   // this function swaps positions of n and the empty block within our puzzle array - caleb
-  //TODO: increment steps in database by 1
+  // get curstep and beststep
+  const sendRequest = new XMLHttpRequest();
+  sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+  sendRequest.send(null);
+  curstep = sendRequest.response.currStep;
+  beststep = sendRequest.response.bestStep;
+
   var indexEmpty = arr.indexOf(23);
   var temp = arr[n];
   arr[n] = 23;
   arr[indexEmpty] = temp;
   document.getElementById(n).src = "src/images/unc" + 23 + ".jpg";
   document.getElementById(indexEmpty).src = "src/images/unc" + temp + ".jpg";
+  // increment  curstep by 1 and update puzzle arrray
+  const sendRequest = new XMLHttpRequest();
+  sendRequest.open("PATCH", "/app/update/game/" + curUser, false);
+  sendRequest.send(curstep+1, beststep, arr, curUser);
 }
 
 function checkSolved(arr) {
