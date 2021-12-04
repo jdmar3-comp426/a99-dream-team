@@ -3,26 +3,44 @@ This css file is here to add functionality and style elements that
 were needed. You must not edit this file or use it in any way.
  */
 
-html, body{
+html,
+body {
     height: 100%;
     font-size: 1.1em;
     background-color: #fafafa;
 }
-hr{
+
+hr {
     background-color: #e6e6e4;
 }
 
-.title{
+.title {
     font-size: 2.8em !important;
 }
 
-.justify-center .column{
+.justify-center .column {
     display: flex !important;
     justify-content: center !important;
 }
 
-.is-family-secondary{
+.is-family-secondary {
     font-family: 'Shrikhand', cursive !important;
     font-size: 6em !important;
     font-weight: lighter !important;
+}
+
+.scores {
+    position: relative;
+    left: 1200px;
+}
+
+.high-score {
+    position: relative;
+    left: 1205px;
+}
+
+.moves {
+    left: 1050px;
+    position: relative;
+    top: 17px;
 }
