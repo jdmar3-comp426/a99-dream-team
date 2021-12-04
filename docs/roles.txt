@@ -2,3 +2,7 @@ Fangchen Chen
     Backend game script developer
     Front end game-related buttons developer
     writing documentations about game logic and logistics of project progress
+
+Alfred Chen 
+    Frontend developer
+    Design and other high score stuff

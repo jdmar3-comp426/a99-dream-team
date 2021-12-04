@@ -13,6 +13,10 @@ HISTORY
     Completed all game logic
     Front end game-related buttons completed
     Have a working prototype and short demo
+
+12.3 by Alfred
+    Added high score and current score visuals and logic
+    Added bulma to the game to make it look nicer
     
 TODO: (* means optional: do it if we have time left)
 about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/javascript-games-examples-for-beginners/)
