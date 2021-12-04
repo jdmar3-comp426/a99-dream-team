@@ -9,56 +9,61 @@ Video Demo: https://youtu.be/3adAmfAUR4w
 
 A web game that player try to recover scrambled image pieces back to original in as few steps as possible.
 
-## Description
-
-An in-depth paragraph about your project and overview of use.
-
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+  "dependencies": {
+    "better-sqlite3": "^7.4.5",
+    "browser-sync": "^2.27.7",
+    "bulma": "^0.9.3",
+    "concurrently": "^6.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "md5": "^2.3.0"
+  }
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* To run the server type into the terminal
 ```
-code blocks for commands
+npm run start
 ```
 
 ## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+If not working on main, try the branch temp
+
 
 ## Authors
+Fangchen Chen
+    Backend game script developer
+    Front end game-related buttons developer
+    writing documentations about game logic and logistics of project progress
 
-Contributors names and contact info
+Alfred Chen 
+    Frontend developer
+    Design and other high score stuff
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Ted Fowler
+    Backend developer
+    API and database
 
-## Version History
+Caleb Deal
+    Backend game script developer
+    API and database
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
+Roger Yu
+    Frontend developer
+    Log in and create account stuff
+
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the  GNU GENERAL PUBLIC LICENSE Version 3 License - see the LICENSE file for details
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
+See comments in code.
