@@ -1,8 +1,16 @@
-Webpage:
+Video Demo: https://youtu.be/3adAmfAUR4w
 
+Webpage:
+Click the create account button to create your own account.
+The high score is located on the right side above the puzzle along with the current step.
+    The current step increments as move a square.
+Instructions for the game are found at the top of the webpage.
+Used bulma to style the buttons and text.
 
 Database:
-
+Created two tables, userinfo and gameplay to store both the username and password of the user and their current number of steps and high score.
+Also created the corresponding endpoints for CRUD functionality. (password was encrypted with md5 module)
+Database funcitonality is available to and called by the front end.
 
 Game:
 Goal of the game is to recover the original image, with as few steps as possible
