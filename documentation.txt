@@ -1,7 +1,0 @@
-
-Goal of the game is to recover the original image, with as few steps as possible
-Click Randomize! button to start the game
-Click image block next to the white block to move it
-Clicking on white block or non-adjacent block will not increase your step count
-The puzzle generated is gauranteed to be solvable!
-You can always restart the game by clicking the randomize! button again, your step will be reset as well
