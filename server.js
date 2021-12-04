@@ -77,6 +77,7 @@ app.get("/app/user/auth", (req, res) => {
   const stmt = db
     .prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
     .get(req.body.user, req.body.pass);
+  console.log(stmt);
   if (stmt == null) {
     res.status(500).send("Incorrect");
   } else {
