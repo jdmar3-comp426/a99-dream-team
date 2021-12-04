@@ -13,6 +13,14 @@ HISTORY
     Completed all game logic
     Front end game-related buttons completed
     Have a working prototype and short demo
+12.3
+    Completed database using two tables
+12.4
+    Fleshed out webpage contents
+    Stylized webpage with Bulma
+    Created buttons for creating account
+    Added dynamic step count and highscore
+    Filmed demo
     
 TODO: (* means optional: do it if we have time left)
 about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/javascript-games-examples-for-beginners/)
