@@ -38,17 +38,17 @@ about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/jav
     DONE Figure out how to read output from puzzle.js
     DONE Figure out how to update the page according to the output
 about the page:
-    Titles, introductions, and basic infos
-    Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
-    Interactions with the front end should be logged in a database.
+    DONE Titles, introductions, and basic infos
+    DONE Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
+    DONE Interactions with the front end should be logged in a database.
     * Decorations
 about database:
-    User database - registration details (username, password, email address, etc.)
-    Interaction database - details of user interactions (login history, gameplay history, save points, scores, etc.)
+    DONE User database - registration details (username, password, email address, etc.)
+    DONE Interaction database - details of user interactions (login history, gameplay history, save points, scores, etc.)
 about the project:
     README.md file with basic descriptiong, installation requirements/instructions, dependency list, run instructions
     /docs/ directory containing full documentation of every available API endpoint that you create for your app. This directory shoud also house an archive of your planning documentation.
-    Code comments (preferably referring to the documentation)
+    DONE Code comments (preferably referring to the documentation)
     User instructions in the interface
-    Demo
-    Self/group evaluation
+    DONE Demo
+    DONE Self/group evaluation
