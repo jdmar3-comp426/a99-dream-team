@@ -13,14 +13,6 @@ HISTORY
     Completed all game logic
     Front end game-related buttons completed
     Have a working prototype and short demo
-12.3
-    Completed database using two tables
-12.4
-    Fleshed out webpage contents
-    Stylized webpage with Bulma
-    Created buttons for creating account
-    Added dynamic step count and highscore
-    Filmed demo
     
 TODO: (* means optional: do it if we have time left)
 about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/javascript-games-examples-for-beginners/)
@@ -38,17 +30,17 @@ about the game: (reference PICKLE RICK MAZE GAME from https://devdevshow.com/jav
     DONE Figure out how to read output from puzzle.js
     DONE Figure out how to update the page according to the output
 about the page:
-    DONE Titles, introductions, and basic infos
-    DONE Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
-    DONE Interactions with the front end should be logged in a database.
+    Titles, introductions, and basic infos
+    Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
+    Interactions with the front end should be logged in a database.
     * Decorations
 about database:
-    DONE User database - registration details (username, password, email address, etc.)
-    DONE Interaction database - details of user interactions (login history, gameplay history, save points, scores, etc.)
+    User database - registration details (username, password, email address, etc.)
+    Interaction database - details of user interactions (login history, gameplay history, save points, scores, etc.)
 about the project:
     README.md file with basic descriptiong, installation requirements/instructions, dependency list, run instructions
     /docs/ directory containing full documentation of every available API endpoint that you create for your app. This directory shoud also house an archive of your planning documentation.
-    DONE Code comments (preferably referring to the documentation)
+    Code comments (preferably referring to the documentation)
     User instructions in the interface
-    DONE Demo
-    DONE Self/group evaluation
+    Demo
+    Self/group evaluation
