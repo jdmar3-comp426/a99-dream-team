@@ -1,3 +1,10 @@
+Webpage:
+
+
+Database:
+
+
+Game:
 Goal of the game is to recover the original image, with as few steps as possible
 Click Randomize! button to start the game
 Click image block next to the white block to move it
