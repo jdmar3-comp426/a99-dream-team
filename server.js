@@ -29,12 +29,12 @@ app.get("/app/", (req, res, next) => {
 
 // Creating a new user's account info
 app.post("/app/new/user", (req, res) => {
-  var data = {
-    user: req.body.user,
-    pass: req.body.pass ? md5(req.body.pass) : null,
-  };
+  // var data = {
+  //   user: req.body.user,
+  //   pass: md5(req.body.pass),
+  // };
   const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)");
-  const info = stmt.run(data.user, data.pass);
+  const info = stmt.run(req.body.user, md5(req.body.pass));
   res.status(201).json({
     message:
       info.changes + " record created: ID " + info.lastInsertRowid + " (201)",
