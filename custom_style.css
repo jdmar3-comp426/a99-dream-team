@@ -29,18 +29,13 @@ hr {
     font-weight: lighter !important;
 }
 
-.scores {
-    position: relative;
-    left: 1200px;
-}
-
 .high-score {
     position: relative;
-    left: 1205px;
+    left: 1130px;
 }
 
 .moves {
-    left: 1050px;
+    left: 975px;
     position: relative;
     top: 17px;
 }
