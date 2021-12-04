@@ -64,13 +64,13 @@ function makePuzzle() {
     puzzleArr = puzzle;
 
     // Gets step counter and high score to display
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     beststep = sendRequest.response.bestStep;
     document.getElementById("highScore").innerHTML = beststep;
 
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     currstep = sendRequest.response.currStep;
@@ -177,12 +177,12 @@ function swap(n, arr) {
         document.getElementById(i).src = "src/images/unc" + puzzle[i] + ".jpg";
     }
     // get bestStep
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     beststep = sendRequest.response.bestStep;
     // update currStep
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("POST", "http://localhost:5000/app/new/game", false);
     sendRequest.send(curUser, 0, beststep, puzzle);
     puzzleArr = puzzle;
@@ -197,7 +197,7 @@ function myclick(n) {
     // if place is swapped and puzzle is not solved, return -1
 
     // get current puzzle
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     arr = sendRequest.response.game;
@@ -281,7 +281,7 @@ function myclick(n) {
 function swap(n, arr) {
     // this function swaps positions of n and the empty block within our puzzle array - caleb
     // get curstep and beststep
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     curstep = sendRequest.response.currStep;
@@ -294,7 +294,7 @@ function swap(n, arr) {
     document.getElementById(n).src = "src/images/unc" + 23 + ".jpg";
     document.getElementById(indexEmpty).src = "src/images/unc" + temp + ".jpg";
     // increment  curstep by 1 and update puzzle arrray
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("PATCH", "/app/update/game/" + curUser, false);
     sendRequest.send(curstep + 1, beststep, arr, curUser);
 }
@@ -308,12 +308,12 @@ function checkSolved(arr) {
     }
 
     // Gets high score and current step to display
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     beststep = sendRequest.response.bestStep;
 
-    const sendRequest = new XMLHttpRequest();
+    var sendRequest = new XMLHttpRequest();
     sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
     sendRequest.send(null);
     currstep = sendRequest.response.currStep;
