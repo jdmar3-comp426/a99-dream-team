@@ -73,6 +73,17 @@ app.get("/app/user/:id", (req, res) => {
   res.status(200).json(stmt);
 });
 
+app.get("/app/user/auth", (req, res) => {
+  const stmt = db
+    .prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
+    .get(req.body.user, req.body.pass);
+  if (stmt == null) {
+    res.status(500).send("Incorrect");
+  } else {
+    res.status(200).json(stmt);
+  }
+});
+
 // Retrieving a specific user's game info by id
 app.get("/app/game/:id", (req, res) => {
   const stmt = db
