@@ -3,6 +3,8 @@
 See [documentation](docs/documentation.txt) for how to play the game, how the game works, and other nerdy stuff!
 See our [roles](docs/roles.txt)
 
+Video Demo: https://youtu.be/3adAmfAUR4w
+
 # Picture Puzzle Game
 
 A web game that player try to recover scrambled image pieces back to original in as few steps as possible.
