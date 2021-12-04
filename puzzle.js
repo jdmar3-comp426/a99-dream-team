@@ -5,8 +5,6 @@
 */
 // TODO: please remove all reference to puzzleArr once all database interactions are completed
 var puzzleArr;
-var highScore;
-var stepCounter;
 //var db = require('./database.js');
 const startbtn = document.querySelector("#start");
 
@@ -65,9 +63,18 @@ function makePuzzle() {
     // db.prepare().run()
     puzzleArr = puzzle;
 
-    // Initalizes step counter
-    stepCount = 0;
-    document.getElementById("stepCount").innerHTML = stepCount;
+    // Gets step counter and high score to display
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    beststep = sendRequest.response.bestStep;
+    document.getElementById("highScore").innerHTML = beststep;
+
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    currstep = sendRequest.response.currStep;
+    document.getElementById("stepCount").innerHTML = currstep;
 
     return puzzle;
 }
@@ -161,6 +168,135 @@ function swap(n, arr) {
     // Increment step count on each move
     stepCount++;
     document.getElementById("stepCount").innerHTML = stepCount;
+    // check against isSolvable() return puzzle : generate another one and repeat
+    var puzzle = genPuzzle();
+    while (isSolvable(puzzle) == false) {
+        puzzle = genPuzzle();
+    }
+    for (let i = 0; i < 24; i++) {
+        document.getElementById(i).src = "src/images/unc" + puzzle[i] + ".jpg";
+    }
+    // get bestStep
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    beststep = sendRequest.response.bestStep;
+    // update currStep
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("POST", "http://localhost:5000/app/new/game", false);
+    sendRequest.send(curUser, 0, beststep, puzzle);
+    puzzleArr = puzzle;
+    return puzzle;
+}
+
+function myclick(n) {
+    // - caleb
+    // n is the block that is clicked
+    // check if n is next to the empty block  swap place check success return : do nothing return false
+    // neighbor in 4*6 matrix means index is +-1 or +-6 watch out for edge cases
+    // if place is swapped and puzzle is not solved, return -1
+
+    // get current puzzle
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    arr = sendRequest.response.game;
+    //console.log(arr);
+    //arr = puzzleArr;
+    if (arr[n] == 23) {
+        // if clicking on white space do nothing
+        return false;
+    } else if (n == 0) {
+        // for top-left corner
+        if ((arr[1] == 23) | (arr[6] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n == 5) {
+        // for top-right corner
+        if ((arr[4] == 23) | (arr[11] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n == 18) {
+        // for bot-left corner
+        if ((arr[12] == 23) | (arr[19] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n == 23) {
+        // for bot-right corner
+        if ((arr[22] == 23) | (arr[17] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n < 6) {
+        // for first row
+        if ((arr[n + 1] == 23) | (arr[n - 1] == 23) | (arr[n + 6] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n > 19) {
+        // for last row
+        if ((arr[n + 1] == 23) | (arr[n - 1] == 23) | (arr[n - 6] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n % 6 == 0) {
+        // for first col
+        if ((arr[n - 6] == 23) | (arr[n + 6] == 23) | (arr[n + 1] == 23)) {
+            swap(n, arr);
+        }
+    } else if (n % 6 == 0) {
+        // for last col
+        if ((arr[n - 6] == 23) | (arr[n + 6] == 23) | (arr[n - 1] == 23)) {
+            swap(n, arr);
+        }
+    } else if (
+        (arr[n + 1] == 23) |
+        (arr[n - 1] == 23) |
+        (arr[n + 6] == 23) |
+        (arr[n - 6] == 23)
+    ) {
+        // normal case
+        swap(n, arr);
+    } else {
+        // returning false if no swap occurred
+        // Should never meet this case
+        return false;
+    }
+
+    if (checkSolved(arr)) {
+        // get curstep and beststep
+        const sendRequest = new XMLHttpRequest();
+        sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+        sendRequest.send(null);
+        curstep = sendRequest.response.currStep;
+        beststep = sendRequest.response.bestStep;
+        if (curstep < beststep) {
+            // if improved, update beststep
+            const sendRequest = new XMLHttpRequest();
+            sendRequest.open("PATCH", "/app/update/game/" + curUser, false);
+            sendRequest.send(curstep, curstep, arr, curUser);
+        }
+    }
+
+    return;
+}
+
+function swap(n, arr) {
+    // this function swaps positions of n and the empty block within our puzzle array - caleb
+    // get curstep and beststep
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    curstep = sendRequest.response.currStep;
+    beststep = sendRequest.response.bestStep;
+
+    var indexEmpty = arr.indexOf(23);
+    var temp = arr[n];
+    arr[n] = 23;
+    arr[indexEmpty] = temp;
+    document.getElementById(n).src = "src/images/unc" + 23 + ".jpg";
+    document.getElementById(indexEmpty).src = "src/images/unc" + temp + ".jpg";
+    // increment  curstep by 1 and update puzzle arrray
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("PATCH", "/app/update/game/" + curUser, false);
+    sendRequest.send(curstep + 1, beststep, arr, curUser);
 }
 
 function checkSolved(arr) {
@@ -171,11 +307,18 @@ function checkSolved(arr) {
         }
     }
 
-    // Updates high score
-    highScore = Math.min(highScore, stepCount);
-    document.getElementById("highScore").innerHTML = highScore;
+    // Gets high score and current step to display
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    beststep = sendRequest.response.bestStep;
 
-    window.alert("You've completed the puzzle in " + stepCounter + " steps! Your high score is " + highScore + "!");
+    const sendRequest = new XMLHttpRequest();
+    sendRequest.open("GET", "http://localhost:5000/app/game/" + curUser, false);
+    sendRequest.send(null);
+    currstep = sendRequest.response.currStep;
+
+    window.alert("You've completed the puzzle in " + currstep + " steps! Your high score is " + beststep + "!");
 
     return true;
 }
