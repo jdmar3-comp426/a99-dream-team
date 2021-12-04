@@ -44,7 +44,7 @@ app.post("/app/new/user", (req, res) => {
 // Creating a user's gameplay info
 app.post("/app/new/game", (req, res) => {
   const stmt = db.prepare(
-    "INSERT INTO gameplay (currStep, bestStep, game) VALUES (?, ?, ?)"
+    "INSERT INTO gameplay (id, currStep, bestStep, game) VALUES (?, ?, ?, ?)"
   );
   const info = stmt.run(req.body.currStep, req.body.bestStep, req.body.game);
   res.status(201).json({
