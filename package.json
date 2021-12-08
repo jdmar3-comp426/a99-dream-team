@@ -1,0 +1,32 @@
+{
+  "name": "a99-dream-team",
+  "version": "1.0.0",
+  "description": "picture puzzle API",
+  "main": "index.js",
+  "scripts": {
+    "client": "npx browser-sync start -sw",
+    "server": "node server.js",
+    "start": "concurrently --kill-others 'npm run client' 'npm run server'"
+  },
+  "proxy": "http://localhost:8080",
+  "repository": {
+    "type": "git",
+    "url": "git+https://FangchenChen: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@github.com/jdmar3-comp426/a99-dream-team.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jdmar3-comp426/a99-dream-team/issues"
+  },
+  "homepage": "https://github.com/jdmar3-comp426/a99-dream-team#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.4.5",
+    "browser-sync": "^2.27.7",
+    "bulma": "^0.9.3",
+    "concurrently": "^6.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "md5": "^2.3.0"
+  }
+}

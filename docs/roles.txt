@@ -1,0 +1,22 @@
+Demo: https://youtu.be/3adAmfAUR4w
+
+Fangchen Chen
+    Backend game script developer
+    Front end game-related buttons developer
+    writing documentations about game logic and logistics of project progress
+
+Alfred Chen 
+    Frontend developer
+    Design and other high score stuff
+
+Ted Fowler
+    Backend developer
+    API and database
+
+Caleb Deal
+    Backend game script developer
+    API and database
+
+Roger Yu
+    Frontend developer
+    Log in and create account stuff

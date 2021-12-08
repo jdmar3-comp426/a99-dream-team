@@ -1,54 +1,69 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6339644&assignment_repo_type=AssignmentRepo)
-# a99 Finally
 
-COMP426 final project template repository. All your code and documentation goes here. Change this text to be a brief description of your final project. Put the name in the header above. You will change everything below to be the main technical documentation, as outlined below.
+See [documentation](docs/documentation.txt) for how to play the game, how the game works, and other nerdy stuff!
+See our [roles](docs/roles.txt)
 
-## First steps
+Video Demo: https://youtu.be/3adAmfAUR4w
 
-Other steps that you will need to take after you have cloned this repository:
+# Picture Puzzle Game
 
-1. Choose and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
+A web game that player try to recover scrambled image pieces back to original in as few steps as possible.
 
-## Team mangement
+## Getting Started
 
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
+### Dependencies
 
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
+  "dependencies": {
+    "better-sqlite3": "^7.4.5",
+    "browser-sync": "^2.27.7",
+    "bulma": "^0.9.3",
+    "concurrently": "^6.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "md5": "^2.3.0"
+  }
 
-Some basic roles you will want to consider:
 
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Databse lead
-    4. Design lead
-    5. Etc.
+### Executing program
 
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
+* To run the server type into the terminal
+```
+npm run start
+```
 
-## Check in with instructional staff
+## Help
 
-Once all the groups are together, we'll assign each group to an LA to check in with as you progress through the project.
+If not working on main, try the branch temp
 
-We will post that so that your team can schedule a time for an initial check-in with your assigned LA. It would be a good idea also to add your LA to your repository.
 
-## Assignment instructions
+## Authors
+Fangchen Chen
+    Backend game script developer
+    Front end game-related buttons developer
+    writing documentations about game logic and logistics of project progress
 
-And that is about all you need to get started.
+Alfred Chen 
+    Frontend developer
+    Design and other high score stuff
 
-All the rest of the assignment instructions are available at: https://comp426.johndmart.in/assignments/99
+Ted Fowler
+    Backend developer
+    API and database
 
-Good skill, and have fun with this!
+Caleb Deal
+    Backend game script developer
+    API and database
+
+Roger Yu
+    Frontend developer
+    Log in and create account stuff
+
+
+## License
+
+This project is licensed under the  GNU GENERAL PUBLIC LICENSE Version 3 License - see the LICENSE file for details
+
+## Acknowledgments
+
+See comments in code.
